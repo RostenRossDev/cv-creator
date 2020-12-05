@@ -3,10 +3,11 @@ import React from 'react';
 
 function App(){
     return(
-        <div style="">
+        <div style={{textAlign: 'center'}}>
             <br/>
-            <button>Ir a PDF</button>
+            <a href="./EditorCv" target="_blank"><button>Crear Curriculum</button></a>
         </div>
+        
     );
 }
 
