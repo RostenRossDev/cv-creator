@@ -1,6 +1,9 @@
 import React from 'react';
-import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
-import perfil from '../static/img/perfil01.jpg'
+import { Page, Text, Document, StyleSheet } from '@react-pdf/renderer';
+import NombreApellido from './pdfComponentes/NombreApellido';
+import ImagenFondo from './pdfComponentes/ImagenFondo';
+
+
 const styles = StyleSheet.create({
     page: {
       backgroundColor: 'tomato',
@@ -12,31 +15,51 @@ const styles = StyleSheet.create({
       textAlign:'center',
       margin:30
     },
-    text:{
-        margin:12,
-        fontSize:14,
-        textAlign:'justify',
-        fontFamily:'Times-Roman'
+    nombre:{
+      margin:12,
+      fontSize:30,
+      textAlign:'justify',
+      fontFamily:'Times-Roman',
+      left:200,
+      top:-150
     },
+    apellido:{
+      margin:12,
+      fontSize:35,
+      textAlign:'justify',
+      fontFamily:'Times-Roman',
+      left:200,
+      top:-150
+    },
+    header:{
+      display:"inline-block",
+      backgroundColor:"#1CD3A2"
+    }
     
   });
 
 
 const Pdf = (props) => (
-    
-    <Document >
-      <Page size="A4" style={styles.page} >
-        <Image 
-            source={perfil}
-            style={{ borderRadius:150,
-                border: "${props.data.botderTam} solid #666",
-                marginTop:10,
-                height:150,
-                width:150
-            }} 
+
+   <Document >
+        {console.log('borderTam: '+props.data.borderTam)}
+      <Page size="A4" style={styles.page}  >
+
+        <ImagenFondo
+          posicionImg={props.data.posicionImg}
+          colorBorde={props.data.colorBorde}
+          imgBgColor={props.data.imgBgColor}
+          borderTam={props.data.borderTam}
+          imagenFondo={props.data.imagenFondo}
         />
-        <Text style={styles.text} >Hola {props.data.nombre} {props.data.apellido} este es tu CV.</Text>
-        { props.data.cursos.map(curso=>{
+        <NombreApellido
+          nombre={props.data.nombre}
+          apellido={props.data.apellido}
+          nombreL={props.data.nombreL}
+          nombreT={props.data.nombreT}
+          imagenFondo={props.data.imagenFondo}
+        />
+        {props.data.cursos.map(curso=>{
             return <Text style={styles.text}  >{curso.nombre} : {curso.cuerpo.descripcion} Inicio: {curso.cuerpo.inicio}  Finalizado: {curso.cuerpo.fin}</Text>
             })
         }
