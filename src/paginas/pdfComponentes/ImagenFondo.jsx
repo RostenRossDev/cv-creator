@@ -14,14 +14,18 @@ function ImagenFondo(props){
         },
         horizontal:{
             backgroundColor:props.imgBgColor,
-            height:"22%",
-            width:"100%"
+            height:"15%",
+            width:"100%",
+            left:-35,
+            borderBottomRightRadius:40,
+            borderTopRightRadius:40,
         },
         vertical:{
             backgroundColor:props.imgBgColor,
             height:"100%",
-            width:"30%",
-            marginLeft:0
+            width:"35%",
+            left:-35,
+            
         }
     })
 

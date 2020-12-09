@@ -46,6 +46,7 @@ const Pdf = (props) => (
       <Page size="A4" style={styles.page}  >
 
         <ImagenFondo
+          
           posicionImg={props.data.posicionImg}
           colorBorde={props.data.colorBorde}
           imgBgColor={props.data.imgBgColor}
@@ -53,11 +54,15 @@ const Pdf = (props) => (
           imagenFondo={props.data.imagenFondo}
         />
         <NombreApellido
+          
           nombre={props.data.nombre}
           apellido={props.data.apellido}
           nombreL={props.data.nombreL}
           nombreT={props.data.nombreT}
           imagenFondo={props.data.imagenFondo}
+          left={props.data.left}
+          center={props.data.center}
+          right={props.data.right}
         />
         {props.data.cursos.map(curso=>{
             return <Text style={styles.text}  >{curso.nombre} : {curso.cuerpo.descripcion} Inicio: {curso.cuerpo.inicio}  Finalizado: {curso.cuerpo.fin}</Text>
